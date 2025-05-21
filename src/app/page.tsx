@@ -39,85 +39,6 @@ import SupportContact from "@/components/customComponents/Support/Support";
 import BentoGallery from "@/components/customComponents/Gallery/Gallery";
 import Experts from "@/components/customComponents/Mentor/Experts";
 import Awards2 from "@/components/customComponents/Awards/Awards2";
-// import Timeline from "@/components/customComponents/levels/LearningPath/TimeLine";
-
-
-
-
-// export default function Home() {
-//   return (
-//     <div >
-// {/* <Hero></Hero> */}
-
-// <Hero2></Hero2>
-// <TechStack/>
-// <RecapPreviousYear />
-
-// <Mentor/>
-// <Experts/>
-// <MentorScroll/>
-// <Awards/>
-// <TopLeaders/>
-// <Community/>
-// <Projets/>
-// <Map/>
-// {/* <Gallery/> */}
-// <BentoGallery/>
-// <Benifits/>
-// <Timeline/>
-// <OutCome/>
-// <JazbaaStartupPlatform/>
-
-// <OutComeGallary/>
-// <InvestorCarousel/>
-// <JazbaaTimeLine/>
-// <LeftRightAlumniCarousel/>
-// <VideoTestimonials/>
-
-// <ImageTestimonials/>
-// <FeatureGrid/>
-// <Query/>
-// <MediaSection/>
-
-// {/* <Timeline /> */}
-
-
-
-
-
-
-
-
-
-
-// <div>
-
-
-
-// {/* <InitPlacement/> */}
-// </div>
-// {/* <FactAndFiqure/> */}
-
-// {/* <Blogs/> */}
-
-// {/* <Tedx/> */}
-// {/* <Tedx2></Tedx2> */}
-// {/* FeatureGrid is TedX */}
-
-
-
-
-
-
-// {/* <Mentor2/> */}
-
-
-
-// <SupportContact/>
-//     </div>
-//   );
-// }
-
 
 
 
@@ -144,51 +65,11 @@ export default function Home() {
 
   return (
     <div>
-      <QueryModal 
+      {/* <QueryModal 
         isOpen={showModal} 
         onClose={() => setShowModal(false)} 
-      />
+      /> */}
       
-{/* 
-<Hero2></Hero2>
-<TechStack/>
-<RecapPreviousYear />
-
-<Mentor/>
-
-<MentorScroll/>
-<Experts/>
-<Awards/>
-
-<TopLeaders/>
-<Community/>
-<Projets/>
-<Awards2/>
-<Map/>
-{/* <Gallery/> */}
-{/* <BentoGallery/>
-<Benifits/>
-<Timeline/>
-<OutCome/>
-<JazbaaStartupPlatform/>
-
-<OutComeGallary/>
-<InvestorCarousel/>
-<JazbaaTimeLine/>
-<LeftRightAlumniCarousel/>
-<VideoTestimonials/>
-
-<ImageTestimonials/>
-<FeatureGrid/>
-<Query/>
-<MediaSection/> */} 
-
-{/* <Timeline /> */}
-
-
-
-
-
 
 
 
@@ -198,32 +79,12 @@ export default function Home() {
 
 
 
-{/* <InitPlacement/> */}
 </div>
-{/* <FactAndFiqure/> */}
-
-{/* <Blogs/> */}
-
-{/* <Tedx/> */}
-{/* <Tedx2></Tedx2> */}
-{/* FeatureGrid is TedX */}
-
-
-
-
-
-
-{/* <Mentor2/> */}
-
-
-
-{/* <SupportContact/> */}
-{/* <ContactForm/> */}
       <Hero2 />
       <TechStack />
       
       <Projets />
-      <RecapPreviousYear />
+      {/* <RecapPreviousYear />
       <Mentor />
       <MentorScroll />
       <Experts />
@@ -247,7 +108,7 @@ export default function Home() {
       <FeatureGrid />
       <Query />
       <MediaSection />
-      <SupportContact />
+      <SupportContact /> */}
     </div>
   );
 }

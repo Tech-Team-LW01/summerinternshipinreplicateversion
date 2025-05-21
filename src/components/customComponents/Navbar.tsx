@@ -8,31 +8,7 @@ import LOGO from "../../../public/assets/LW-white.png";
 import LOGO1 from "../../../public/assets/LNB.png";
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link'; // Import Link from next/link
-
-// Navigation Items
-const NAV_ITEMS = [
-  { href: "#Projects", text: "Projects" },
-
-  { href: "#Placement", text: "Placement" },
-  { href: "#Benefits", text: "Benefits" },
-  { href: "#JAZBAA", text: "JAZBAA" },
-  { href: "#Preivous", text: "Previous Summer" },
-];
-
-// Route Configuration
-interface RouteConfig {
-  buttonText: string;
-}
-
-const ROUTE_CONFIG: Record<string, RouteConfig> = {
-  '/students': {
-    buttonText: 'Enquire Now'
-  },
-  'default': {
-    buttonText: 'Enquire Now'
-  }
-};
+import Link from 'next/link';
 
 // Animation Variants
 const menuVariants = {
@@ -41,23 +17,12 @@ const menuVariants = {
   exit: { opacity: 0, y: -10 }
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -10 },
-  visible: { opacity: 1, x: 0 }
-};
-
 const Navbar: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
-  const getRouteConfig = (currentPath: string): RouteConfig => {
-    return ROUTE_CONFIG[currentPath] || ROUTE_CONFIG.default;
-  };
-
-  const { buttonText } = getRouteConfig(pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,78 +52,51 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(false);
   };
 
-  const handleNavClick = (href: string) => {
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/919828616335', '_blank');
     closeMobileMenu();
-    document.querySelector(href)?.scrollIntoView({
-      behavior: 'smooth'
-    });
   };
-
-  // const handleEnquiryClick = () => {
-  //   router.push('/application-form');
-  //   closeMobileMenu();
-  // };
 
   return (
     <header
       className={cn(
-        "sticky top-0 z-50  w-full transition-colors duration-300",
+        "sticky top-0 z-50 w-full transition-colors duration-300",
         scrolled ? "bg-black shadow-lg" : "bg-black"
       )}
     >
-<div className="container mx-auto flex items-center justify-between py-4 px-6">
-  {/* Logo */}
-  <div className="flex items-center">
-    <Link href="/" className="flex items-center">
-      <Image
-        src={LOGO}
-        alt="Logo"
-        width={0}
-        height={45}
-        className="h-[45px] w-auto object-contain overflow-hidden"
-        priority
-      />
-    </Link>
-    
-    <Link href="/" className="flex items-center ml-4">
-      <Image
-        src={LOGO1}
-        alt="Logo"
-        width={0}
-        height={42}
-        className="h-[42px] w-auto object-contain overflow-hidden"
-        priority
-      />
-    </Link>
-  </div>
+      <div className="container mx-auto flex items-center justify-between py-4 px-6">
+        {/* Logo */}
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center">
+            <Image
+              src={LOGO}
+              alt="Logo"
+              width={0}
+              height={45}
+              className="h-[45px] w-auto object-contain overflow-hidden"
+              priority
+            />
+          </Link>
+          
+          <Link href="/" className="flex items-center ml-4">
+            <Image
+              src={LOGO1}
+              alt="Logo"
+              width={0}
+              height={42}
+              className="h-[42px] w-auto object-contain overflow-hidden"
+              priority
+            />
+          </Link>
+        </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex space-x-6">
-          <ul className="flex space-x-6">
-            {NAV_ITEMS.map((item, index) => (
-              <li key={index}>
-                <a
-                  href={item.href}
-                  className="text-white hover:text-[#ff0000] transition-colors duration-200"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                >
-                  {item.text}
-                </a>
-              
-              </li>
-            ))}
-              <a
-                  href="#query"
-                  className="text-white hover:text-[#ff0000] transition-colors duration-200"
-                 
-                >
-                  Enquire Now
-                </a>
-          </ul>
-        </nav>
+        {/* Desktop WhatsApp Button */}
+        <button
+          onClick={handleWhatsAppClick}
+          className="hidden lg:block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 hover:shadow-lg transition-all duration-300 text-center"
+        >
+          Start Chat on Whatsapp
+        </button>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -172,14 +110,6 @@ const Navbar: React.FC = () => {
             <List className="h-6 w-6" />
           )}
         </button>
-
-        {/* Desktop CTA Button */}
-        <Link
-          href="#query"
-          className="hidden lg:block bg-[#ff0000] text-white px-6 py-2 rounded-lg hover:bg-[#ff0000]/90 hover:shadow-lg transition-all duration-300 text-center"
-        >
-          {buttonText}
-        </Link>
       </div>
 
       {/* Mobile Menu */}
@@ -191,42 +121,17 @@ const Navbar: React.FC = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            
             transition={{ duration: 0.2 }}
             className="lg:hidden absolute right-4 top-full bg-black w-64 shadow-lg z-10 rounded-lg border border-gray-800"
           >
             <div className="p-4">
-              <ul className="space-y-4">
-                {NAV_ITEMS.map((item, index) => (
-                  <motion.li
-                    key={index}
-                    variants={itemVariants}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <a
-                      href={item.href}
-                      className="block text-white hover:text-[#ff0000] transition-colors duration-200"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick(item.href);
-                      }}
-                    >
-                      {item.text}
-                    </a>
-                  </motion.li>
-                ))}
-              </ul>
-              
-              {/* Mobile CTA Button */}
-              <Link
-                href="/application-form"
-                className="block w-full mt-6 bg-[#ff0000] text-white px-4 py-2 rounded-lg hover:bg-[#ff0000]/90 hover:shadow-lg transition-all duration-300 text-center"
-                onClick={closeMobileMenu}
+              {/* Mobile WhatsApp Button */}
+              <button
+                onClick={handleWhatsAppClick}
+                className="block w-full mt-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 hover:shadow-lg transition-all duration-300 text-center"
               >
-                {buttonText}
-              </Link>
+                Start Chat on Whatsapp
+              </button>
             </div>
           </motion.div>
         )}

@@ -71,8 +71,8 @@ export default function RootLayout({
         <div className="overflow-x-hidden">
           <Navbar/>
           {children}
-          <WhatsAppBot/>
-          <Footer/>
+          {/* <WhatsAppBot/> */}
+          {/* <Footer/> */}
           <Footer3/>
           {/* <Footer2/> */}
         </div>
